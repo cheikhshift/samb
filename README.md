@@ -15,6 +15,7 @@ server {
 
     start {
     	do println("Hello");
+    	do println("Hello again");
     }
 
     shutdown {
