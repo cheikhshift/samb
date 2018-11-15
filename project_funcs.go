@@ -16,6 +16,10 @@ func (p *Project) ProcessImports() {
 		p.Packages = append(p.Packages, file.Packages...)
 		p.Import = append(p.Import, file.Import...)
 
+		// process file route imports
+		p.Templates.Template = append(p.Templates.Template, file.Templates.Template...)
+		p.Routes.Route = append(p.Routes.Route, file.Routes.Route...)
+
 	}
 
 }
@@ -34,27 +38,4 @@ func (p *Project) ProcessServerImports() {
 		p.Import = append(p.Import, file.Import...)
 
 	}
-}
-
-func (p *Project) HasProvider(name string) (has bool) {
-
-	for _, pr := range p.Provider {
-		if pr.Name == name {
-			has = true
-			break
-		}
-	}
-
-	return
-}
-
-func (p *Project) GetProvider(name string) (pr Global) {
-
-	for _, pr = range p.Provider {
-		if pr.Name == name {
-			break
-		}
-	}
-
-	return
 }

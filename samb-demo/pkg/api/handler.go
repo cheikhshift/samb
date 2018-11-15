@@ -14,7 +14,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, "/hello/") {
 		println("Hello")
 
-		if r.URL.Path == "/hello/Foo" && r.Method == "GET" {
+		if strings.Contains(r.URL.Path, "/hello/Foo") && r.Method == "GET" {
 			println("Hello")
 			fmt.Println("Hello")
 		}

@@ -13,7 +13,7 @@ func ExportServer(p *samb.Project) error {
 
 	startCode := strings.Join(p.Server.Start.Do, "\n")
 
-	startCode = fmt.Sprintf(cmdWrapper, "Start", startCode)
+	startCode = fmt.Sprintf(cmdWrapper, strings.Join(p.Import, "\n"), "Start", startCode)
 
 	err := ioutil.WriteFile("./cmd/server/launch.go", []byte(startCode), 0700)
 
@@ -27,7 +27,7 @@ func ExportServer(p *samb.Project) error {
 func ExportExitCode(p *samb.Project) error {
 	shutdownCode := strings.Join(p.Server.Shutdown.Do, "\n")
 
-	shutdownCode = fmt.Sprintf(cmdWrapper, "Stop", shutdownCode)
+	shutdownCode = fmt.Sprintf(cmdWrapper, strings.Join(p.Import, "\n"), "Stop", shutdownCode)
 
 	err := ioutil.WriteFile("./cmd/server/stop.go", []byte(shutdownCode), 0700)
 

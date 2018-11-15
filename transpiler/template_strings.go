@@ -3,6 +3,10 @@ package transpiler
 var cmdWrapper string = `// GENERATED CODE, DO NOT EDIT!
 package main
 
+import (
+		%s
+)
+
 func %s(){
 	%s
 }`
