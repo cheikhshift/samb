@@ -59,9 +59,10 @@ The following package is used to parse this Nginx like configuration language : 
 
 ## Todo
 
-- Better documentation.
+- Provide better documentation.
 - Sublime/VSCode text plugins.
-- Package tests.
+- Write package tests.
+- Write tutorials/ guides.
 
 
 ### More samples
