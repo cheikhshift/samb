@@ -90,6 +90,10 @@ routes {
 
 	    go {
 	    	do println("Hello");
+	    	# The following commented
+	    	# do directive will stop a
+	    	# request :
+	    	# do return;
 	    }
 
 	    route {
