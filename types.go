@@ -4,7 +4,7 @@ type Project struct {
 	Server          Server
 	Require, Import []string
 	Provider        []Global
-	Package 		string
+	Package         string
 	Author          string
 	Packages        []string
 	Routes          Routes

@@ -1,10 +1,5 @@
 package main
 
-import (
-	"io/ioutil"
-	"fmt"
-)
-
 var serverTemplate = `# Go package import path of your project.
 package %s;
 
@@ -107,11 +102,3 @@ routes {
 
 	}
 }`
-
-func newServer(p string) {
-
-	ioutil.WriteFile("./server.se", []byte(fmt.Sprintf(serverTemplate, p ) ), 0700)
-	ioutil.WriteFile("./endpoints.se", []byte(routeTemplate), 0700)
-	ioutil.WriteFile("./providers.se", []byte(providerTemplate), 0700)
-
-}

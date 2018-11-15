@@ -5,7 +5,6 @@ func (p *Project) ProcessImports() {
 
 	for _, i := range p.Require {
 
-
 		file, err := Load(i)
 
 		if err != nil {

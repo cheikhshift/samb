@@ -2,11 +2,9 @@ package main
 
 import (
 	"flag"
-	"log"
 	"os"
-	"os/exec"
-	"samb"
-	"samb/transpiler"
+
+	"github.com/cheikhshift/samb"
 )
 
 func main() {
@@ -17,7 +15,6 @@ func main() {
 	newFile := flag.Bool("new", false, "If true, a new project will be created. First argumenet after will be your package's Go import path.")
 
 	flag.Parse()
-
 
 	if *newFile {
 		args := flag.Args()
@@ -42,41 +39,4 @@ func main() {
 
 	buildProject(file)
 
-}
-
-func buildProject(file *samb.Project) {
-	transpiler.Setup()
-
-	err := transpiler.Transpile(file)
-
-	if err != nil {
-		panic(err)
-	}
-
-	log.Println("Formatting output")
-
-	formatCode()
-
-	log.Println("Adding imports")
-	manageImports()
-}
-
-func formatCode() {
-	cmd := exec.Command("gofmt", "-w", "./")
-
-	err := cmd.Run()
-
-	if err != nil {
-		panic(err)
-	}
-}
-
-func manageImports() {
-	cmd := exec.Command("goimports", "-w", "./")
-
-	err := cmd.Run()
-
-	if err != nil {
-		panic(err)
-	}
 }

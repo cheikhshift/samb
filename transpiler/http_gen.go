@@ -4,7 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"samb"
+
+	"github.com/cheikhshift/samb"
+
 	"strings"
 )
 
@@ -22,7 +24,7 @@ func ExportRoutes(p *samb.Project) (err error) {
 		routeDef += def
 	}
 
-	routeDef = fmt.Sprintf(routeWrapper, strings.Join(p.Import ,"\n") ,routeDef)
+	routeDef = fmt.Sprintf(routeWrapper, strings.Join(p.Import, "\n"), routeDef)
 
 	err = ioutil.WriteFile("./pkg/api/handler.go", []byte(routeDef), 0700)
 
@@ -88,12 +90,9 @@ func StripSlashes(i string) string {
 	return tlc
 }
 
-
-
 func GetCusomCode(r samb.Route) string {
 	return strings.Join(r.Go.Do, "\n") + "\n"
 }
-
 
 func WrapEndpoint(path string, r samb.Route, h string, shouldEqual bool) string {
 	res := fmt.Sprintf(`

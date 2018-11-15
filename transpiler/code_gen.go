@@ -3,7 +3,8 @@ package transpiler
 import (
 	"fmt"
 	"io/ioutil"
-	"samb"
+
+	"github.com/cheikhshift/samb"
 )
 
 func Transpile(p *samb.Project) error {

@@ -3,7 +3,9 @@ package transpiler
 import (
 	"fmt"
 	"io/ioutil"
-	"samb"
+
+	"github.com/cheikhshift/samb"
+
 	"strings"
 )
 

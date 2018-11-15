@@ -35,7 +35,6 @@ var routeWrapper string = `//package api contains your web app's handler definit
 			%s
 }`
 
-
 var mainWrapper string = `// GENERATED CODE, DO NOT EDIT!
 package main
 
