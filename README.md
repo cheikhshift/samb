@@ -42,9 +42,10 @@ Create a new directory, then run the following command.
 The command will add files in the new folder. Have a look at the files generated to give you an idea on how `samb` directives work. Some directives have comments further explaining their functionality.
 
 ## Transpiling
-Run the following code to convert your directives into Go code.
+Run the following command to convert your directives into Go code.
 
-		samb-cl -file=server.se -project=<NEW DIR PATH>
+	
+	samb-cl -file=server.se -project=<NEW DIR PATH>
 
 This will convert your directives into a Go library to handle your HTTP routes. A command will also be generated to launch your server, you can find the source code at `<NEW DIR PATH>/cmd/server`. 
 
