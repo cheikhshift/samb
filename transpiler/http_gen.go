@@ -63,7 +63,7 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 
 	h := GetHandler(p, r, providers)
 
-	def = WrapEndpoint(path, r, h+def, len(r.Route) == 0)
+	def = WrapEndpoint(path, r, h+def)
 
 	return
 }
@@ -94,14 +94,11 @@ func GetCusomCode(r samb.Route) string {
 	return strings.Join(r.Go.Do, "\n") + "\n"
 }
 
-func WrapEndpoint(path string, r samb.Route, h string, shouldEqual bool) string {
+func WrapEndpoint(path string, r samb.Route, h string) string {
 	res := fmt.Sprintf(`
 		if  strings.Contains(r.URL.Path , "%s") `, path+r.Path)
 
-	if shouldEqual {
-		res = fmt.Sprintf(`
-		if  r.URL.Path == "%s" `, path+r.Path)
-	}
+
 
 	if r.Method != "" &&
 		r.Method != "*" {
