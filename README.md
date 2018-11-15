@@ -18,8 +18,8 @@ server {
     }
 
     shutdown {
-	    # directive do will execute passed
-	    # golang code
+	# directive do will execute passed
+	# golang code
     	do println("Bye");
     }  
 }
