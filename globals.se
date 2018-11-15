@@ -1,0 +1,9 @@
+# Globals are exported via package 
+# globals
+global {
+	name ProdTwo;
+	type bool;
+    # Directive return specifies the 
+    # value of the global variable
+	return false;
+}

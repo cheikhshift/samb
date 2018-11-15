@@ -71,6 +71,7 @@ The following package is used to parse this Nginx like configuration language : 
 # Routes' definition
 # Import Go packages with directive import
 # For example import "net/http";
+# samb source format checking.
 
 
 routes {

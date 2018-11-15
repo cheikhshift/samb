@@ -4,3 +4,5 @@
 package globals
 
 var Prod bool = false
+
+var ProdTwo bool = false

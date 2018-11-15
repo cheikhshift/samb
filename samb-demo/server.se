@@ -3,7 +3,7 @@ package github.com/cheikhshift/samb/samb-demo;
 
 
 # import providers
-require "./providers.se";
+require "../providers.se";
 
 
 # Globals are exported via package 

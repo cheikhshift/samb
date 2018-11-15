@@ -1,6 +1,12 @@
 package samb
 
-import "github.com/recoye/config"
+import (
+	"log"
+	"os"
+	"strings"
+
+	"github.com/recoye/config"
+)
 
 func Load(path string) (*Project, error) {
 
@@ -13,8 +19,29 @@ func Load(path string) (*Project, error) {
 		return nil, err
 	}
 
+
+	chDirRootOf(path)
+
 	env.ProcessImports()
-	env.ProcessServerImports()
 
 	return env, nil
+}
+
+func chDirRootOf(file string) {
+
+	parts := strings.Split(file, "/")
+	file = strings.Replace(file, parts[len(parts)-1], "", -1)
+
+	if file == "" {
+		file = "./"
+	}
+	
+	log.Println("Changing Directory to ", file)
+
+
+	err := os.Chdir(file)
+
+	if err != nil {
+		panic(err)
+	}
 }
