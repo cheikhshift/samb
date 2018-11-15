@@ -29,6 +29,8 @@ server {
 
 ## Install
 
+`samb` requires Go +v1.8
+
 ```
 go get github.com/cheikhshift/samb/cmd/samb-cl
 ```

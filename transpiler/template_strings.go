@@ -43,6 +43,7 @@ var mainWrapper string = `// GENERATED CODE, DO NOT EDIT!
 package main
 
 import "%s/pkg/api"
+import "context"
 
 func main(){
 
@@ -63,19 +64,19 @@ func main(){
 
 	err := h.ListenAndServe()
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
+	
 }
 
 func cleanUp(h *http.Server){
 	log.Println("\nShutting down the server...")
-	err := h.Close()
 
-	if err != nil {
-		panic(err)
-	}
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+	h.Shutdown(ctx)
 
 	Stop()
 	log.Println("Server gracefully stopped")
+	
 }`
