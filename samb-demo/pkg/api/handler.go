@@ -18,9 +18,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			println("Hello")
 			fmt.Println("Hello")
 		}
-		if r.URL.Path == "/hello/Baz" && r.Method == "POST" {
-			println("Hello")
-
-		}
 	}
 }
