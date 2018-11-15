@@ -1,0 +1,16 @@
+# Providers are used
+# within endpoint requests.
+provider {
+	name r;
+	type *http.Request;
+    # directive return is not used here.
+    # return can be used to define how your
+    # provider is initialized. For example,
+    # providing a variable with value "Foo"
+    # : return string("Foo") 
+}
+
+provider {
+	name w;
+	type *http.ResponseWriter;
+}
