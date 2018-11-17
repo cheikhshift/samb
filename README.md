@@ -65,6 +65,7 @@ The following package is used to parse this Nginx like configuration language : 
 - Sublime/VSCode text plugins.
 - Write package tests.
 - Write tutorials/ guides.
+- Introduce conditional operators with server and route directives.
 
 
 ### More samples
@@ -113,8 +114,10 @@ routes {
 
 	    	# Handler can be any function.
 	    	# Should be a function that handles the request
-	    	# response
-	    	handler fmt.Println("Hello");
+	    	# response. using provided variable r
+		# with handler. This code will fail,
+		# the referenced handler is not defined
+	    	handler virtualPackage.Handle(r);
 	    }
 
 
