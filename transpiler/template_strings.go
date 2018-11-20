@@ -36,7 +36,23 @@ var routeWrapper string = `//package api contains your web app's handler definit
 		// Handles routing of application.
 		func Handler(w http.ResponseWriter, r *http.Request) {
 
+			defer catchPanic(w,r)
+
 			%s
+}`
+
+var recoveryWrapper string = `package api
+
+// Function used to get
+// error message related 
+// to panic.
+func catchPanic(w http.ResponseWriter, r * http.Request){
+
+	if n := recover(); n != nil {
+
+		%s
+
+	}
 }`
 
 var mainWrapper string = `// GENERATED CODE, DO NOT EDIT!

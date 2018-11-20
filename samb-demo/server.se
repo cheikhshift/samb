@@ -27,6 +27,9 @@ server {
     # Import web route definitions
     require "./endpoints.se";
 
+    recover {
+        do recoverName;
+    }
 
     # Nesting a route in 
     # server.
@@ -34,8 +37,14 @@ server {
 
         route {
 
-            path "/Zd";
+            path "/panic";
             method *;
+
+            go {
+                # Line spacing causes bug.
+                # Recommend using package variables.
+                do panic("Errortest_foo");
+            }
 
             handler fmt.Println("Hi there");
 

@@ -13,6 +13,8 @@ func ExportServer(p *samb.Project) error {
 
 	startCode := strings.Join(p.Server.Start.Do, "\n")
 
+	
+
 	startCode = fmt.Sprintf(cmdWrapper, strings.Join(p.Import, "\n"), "Start", startCode)
 
 	err := ioutil.WriteFile("./cmd/server/launch.go", []byte(startCode), 0700)

@@ -62,13 +62,13 @@ The following package is used to parse this Nginx like configuration language : 
 
 ## Todo
 
-- Provide better documentation.
-- Sublime/VSCode text plugins.
-- Write package tests.
-- Write tutorials/ guides.
-- Introduce conditional operators with server and route directives.
-- A command line to help with adding new handler source.
-- Onyx command line to write to be transpiled tests with `this Nginx like configuration language`.
+- [ ] Provide better documentation.
+- [ ] Sublime/VSCode text plugins.
+- [ ] Write package tests.
+- [ ] Write tutorials/ guides.
+- [ ] Introduce conditional operators with server and route directives.
+- [ ] A command line to help with adding new handler source.
+- [ ] Onyx command line to write to be transpiled tests with `this Nginx like configuration language`.
 
 
 ### More samples

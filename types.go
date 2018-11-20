@@ -25,6 +25,9 @@ type Server struct {
 	// route nesting.
 	Routes   Routes
 	Start    Go
+	// Functions to be invoked
+	// on panic.
+	Recover Go
 	Init     Go
 	Shutdown Go
 }

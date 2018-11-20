@@ -11,8 +11,10 @@ import (
 // Handles routing of application.
 func Handler(w http.ResponseWriter, r *http.Request) {
 
-	if strings.Contains(r.URL.Path, "/Zd") {
+	defer catchPanic(w, r)
 
+	if strings.Contains(r.URL.Path, "/panic") {
+		panic("Errortest_foo")
 		fmt.Println("Hi there")
 	}
 	if strings.Contains(r.URL.Path, "/hello/") {
