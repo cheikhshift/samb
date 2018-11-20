@@ -27,9 +27,6 @@ server {
     # Import web route definitions
     require "./endpoints.se";
 
-    recover {
-        do recoverName;
-    }
 
     # Nesting a route in 
     # server.
