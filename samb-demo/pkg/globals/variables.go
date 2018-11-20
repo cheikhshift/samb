@@ -3,6 +3,8 @@
 // GENERATED CODE, DO NOT EDIT!
 package globals
 
+//
 var Prod bool = false
 
+// Used to indicate something
 var ProdTwo bool = false

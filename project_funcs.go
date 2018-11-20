@@ -1,10 +1,12 @@
+// Package samb has server-assembly's (SAMB) struct types.
 package samb
 
 import (
 	"os"
 )
 
-// Adds required code to project
+// ProcessImports handles finding
+// and merging imports defined by project.
 func (p *Project) ProcessImports() {
 
 	if p.Server.Require != nil {
@@ -37,6 +39,8 @@ func (p *Project) ProcessImports() {
 
 }
 
+// MergeWith combines one project with the one specified
+// as a parameter.
 func (p *Project) MergeWith(file *Project) {
 
 	p.Provider = append(p.Provider, file.Provider...)

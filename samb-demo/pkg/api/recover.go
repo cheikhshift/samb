@@ -10,8 +10,6 @@ func catchPanic(w http.ResponseWriter, r *http.Request) {
 	if n := recover(); n != nil {
 
 		recoverName(w, r, n.(string))
-		recoverName(w, r, n.(string))
-		recoverName(w, r, n.(string))
 
 	}
 }

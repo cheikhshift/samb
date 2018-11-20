@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// Export routes generates source code for exported 
+// ExportRoutes generates source code for exported
 // Handler
 func ExportRoutes(p *samb.Project) (err error) {
 
@@ -29,7 +29,6 @@ func ExportRoutes(p *samb.Project) (err error) {
 		return err
 	}
 
-
 	routeDef = fmt.Sprintf(routeWrapper, strings.Join(p.Import, "\n"), routeDef)
 
 	err = WriteRecoveryFuncs(p.Server.Recover.Do)
@@ -43,7 +42,7 @@ func ExportRoutes(p *samb.Project) (err error) {
 	return
 }
 
-// Process routes generates the conditional
+// ProcessRoute generates the conditional
 // Go statements to match your request to the
 // correct path.
 func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string) (def string, err error) {
@@ -88,11 +87,11 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 // on panic.
 func WriteRecoveryFuncs(r []string) error {
 
-	for i,_ := range r {
+	for i := range r {
 		r[i] += "(w,r,n.(string))"
 	}
 
-	recovFile := fmt.Sprintf(recoveryWrapper, strings.Join(r ,"\n" ))
+	recovFile := fmt.Sprintf(recoveryWrapper, strings.Join(r, "\n"))
 
 	err := ioutil.WriteFile("./pkg/api/recover.go", []byte(recovFile), 0700)
 

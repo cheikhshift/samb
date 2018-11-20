@@ -1,5 +1,7 @@
 package samb
 
+// Project has your samb
+// project directives.
 type Project struct {
 	Server          Server
 	Require, Import []string
@@ -13,7 +15,7 @@ type Project struct {
 }
 
 type Global struct {
-	Name, Type, Return string
+	Name, Type, Return, Comment string
 }
 
 type Server struct {
@@ -23,11 +25,11 @@ type Server struct {
 	Require   []string
 	// Routes field will enable
 	// route nesting.
-	Routes   Routes
-	Start    Go
+	Routes Routes
+	Start  Go
 	// Functions to be invoked
 	// on panic.
-	Recover Go
+	Recover  Go
 	Init     Go
 	Shutdown Go
 }
@@ -45,14 +47,14 @@ type Route struct {
 	Go           Go
 }
 
+type Go struct {
+	Do []string
+}
+
 type Templates struct {
 	Template []Template
 }
 
 type Template struct {
 	FilePath, Type, Name string
-}
-
-type Go struct {
-	Do []string
 }

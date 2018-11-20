@@ -6,4 +6,5 @@ global {
     # Directive return specifies the 
     # value of the global variable
 	return false;
+	comment "Used to indicate something";
 }

@@ -8,6 +8,8 @@ import (
 	"github.com/recoye/config"
 )
 
+// Load, open a project based on the filesystem
+// path supplied.
 func Load(path string) (*Project, error) {
 
 	conf := config.New(path)
@@ -26,6 +28,9 @@ func Load(path string) (*Project, error) {
 	return env, nil
 }
 
+// chDirRootOf will change the working directory to the directory
+// of the specified SAMB
+// source file path.
 func chDirRootOf(file string) {
 
 	parts := strings.Split(file, "/")
