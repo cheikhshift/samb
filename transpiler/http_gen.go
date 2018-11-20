@@ -81,20 +81,3 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 
 	return
 }
-
-// WriteRecoveryFuncs generates a file
-// with the recovery function called
-// on panic.
-func WriteRecoveryFuncs(r []string) error {
-
-	for i := range r {
-		r[i] += "(w,r,n.(string))"
-	}
-
-	recovFile := fmt.Sprintf(recoveryWrapper, strings.Join(r, "\n"))
-
-	err := ioutil.WriteFile("./pkg/api/recover.go", []byte(recovFile), 0700)
-
-	return err
-
-}

@@ -84,7 +84,7 @@ func TestMergeWith(t *testing.T) {
 				Import: []string{"Foo", "Baz"},
 				Routes: Routes{
 					Route: []Route{
-						Route{Path: "Sample"},
+						{Path: "Sample"},
 					},
 				},
 			},
@@ -94,8 +94,8 @@ func TestMergeWith(t *testing.T) {
 				Import: []string{"Foo", "Baz", "Extra", "TEst"},
 				Routes: Routes{
 					Route: []Route{
-						Route{Path: "Sample"},
-						Route{Path: "SampleThree"},
+						{Path: "Sample"},
+						{Path: "SampleThree"},
 					},
 				},
 			},
@@ -125,11 +125,11 @@ func TestHasProvider(t *testing.T) {
 
 	testProject := &Project{
 		Provider: []Global{
-			Global{Name: "Foo"},
-			Global{Name: "Baz"},
-			Global{Name: "Go"},
-			Global{Name: "Vn"},
-			Global{Name: "Bar"},
+			{Name: "Foo"},
+			{Name: "Baz"},
+			{Name: "Go"},
+			{Name: "Vn"},
+			{Name: "Bar"},
 		},
 	}
 
@@ -160,11 +160,11 @@ func TestGetProvider(t *testing.T) {
 
 	testProject := &Project{
 		Provider: []Global{
-			Global{Name: "Foo", Type: "int"},
-			Global{Name: "Baz", Type: "string"},
-			Global{Name: "Go", Type: "int64"},
-			Global{Name: "Vn", Type: "int"},
-			Global{Name: "Bar", Type: "string"},
+			{Name: "Foo", Type: "int"},
+			{Name: "Baz", Type: "string"},
+			{Name: "Go", Type: "int64"},
+			{Name: "Vn", Type: "int"},
+			{Name: "Bar", Type: "string"},
 		},
 	}
 

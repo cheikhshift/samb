@@ -1,6 +1,12 @@
 # samb
 
+[![Build Status](https://travis-ci.org/cheikhshift/samb.svg?branch=master)](https://travis-ci.org/cheikhshift/samb)
+
 [![GoDoc](https://godoc.org/github.com/cheikhshift/samb?status.svg)](https://godoc.org/github.com/cheikhshift/samb) [![Go Report Card](https://goreportcard.com/badge/github.com/cheikhshift/samb)](https://goreportcard.com/report/github.com/cheikhshift/samb)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/062da952018e56ea46d5/maintainability)](https://codeclimate.com/github/cheikhshift/samb/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/062da952018e56ea46d5/test_coverage)](https://codeclimate.com/github/cheikhshift/samb/test_coverage)
 
 Go HTTP route management with Nginx like config language. The aim of `samb` is to provide a web server implementation
 abstraction, where users can specify which Go handler/function should process a request to a web server path.

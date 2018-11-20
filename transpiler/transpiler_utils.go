@@ -2,6 +2,7 @@ package transpiler
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 
 	"github.com/cheikhshift/samb"
@@ -40,21 +41,26 @@ func GetHandler(p *samb.Project, r samb.Route, providers []string) (handler stri
 	return
 }
 
-// StripSlashes turns ever letter following
-// a forward slash to uppercase, then removes slashes from string,
-func StripSlashes(i string) string {
-	var tlc = fmt.Sprintf(
-		"%s", i, strings.Replace(
-			strings.Title(strings.Replace(i, "/", " ", -1)), " ", "", -1,
-		),
-	)
-
-	return tlc
-}
-
 // GetCustomCode returns the Go
 // code to be ran, by the specified
 // samb route.
 func GetCustomCode(r samb.Route) string {
 	return strings.Join(r.Go.Do, "\n") + "\n"
+}
+
+// WriteRecoveryFuncs generates a file
+// with the recovery function called
+// on panic.
+func WriteRecoveryFuncs(r []string) error {
+
+	for i := range r {
+		r[i] += "(w,r,n.(string))"
+	}
+
+	recovFile := fmt.Sprintf(recoveryWrapper, strings.Join(r, "\n"))
+
+	err := ioutil.WriteFile("./pkg/api/recover.go", []byte(recovFile), 0700)
+
+	return err
+
 }
