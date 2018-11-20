@@ -21,9 +21,12 @@ type Server struct {
 	Port      string
 	Webroot   string
 	Require   []string
-	Start     Go
-	Init      Go
-	Shutdown  Go
+	// Routes field will enable
+	// route nesting.
+	Routes   Routes
+	Start    Go
+	Init     Go
+	Shutdown Go
 }
 
 type Routes struct {

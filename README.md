@@ -1,6 +1,7 @@
 # samb
 
-Go HTTP route management with Nginx like config language
+Go HTTP route management with Nginx like config language. The aim of `samb` is to provide a web server implementation
+abstraction, where users can specify which Go handler/function should process a request to a web server path.
 
 Here is a sample server definition :
 

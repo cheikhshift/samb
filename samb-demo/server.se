@@ -6,8 +6,10 @@ package github.com/cheikhshift/samb/samb-demo;
 require "../providers.se";
 
 
-# Globals are exported via package 
-# globals
+# Globals are exported to package 
+# globals with the same identifier
+# as the value specified with the 
+# name directive.
 global {
 	name Prod;
 	type bool;
@@ -25,6 +27,20 @@ server {
     # Import web route definitions
     require "./endpoints.se";
 
+
+    # Nesting a route in 
+    # server.
+    routes {
+
+        route {
+
+            path "/Zd";
+            method *;
+
+            handler fmt.Println("Hi there");
+
+        }
+    }
 
     start {
     	do println("Hello");

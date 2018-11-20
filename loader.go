@@ -19,7 +19,6 @@ func Load(path string) (*Project, error) {
 		return nil, err
 	}
 
-
 	chDirRootOf(path)
 
 	env.ProcessImports()
@@ -35,9 +34,8 @@ func chDirRootOf(file string) {
 	if file == "" {
 		file = "./"
 	}
-	
-	log.Println("Changing Directory to ", file)
 
+	log.Println("Changing Directory to ", file)
 
 	err := os.Chdir(file)
 

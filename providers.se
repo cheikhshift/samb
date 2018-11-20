@@ -1,5 +1,7 @@
 # Providers are used
-# within endpoint requests.
+# with routes.
+# They generate and provide
+# variables for requests' handlers.
 provider {
 	name r;
 	type *http.Request;
