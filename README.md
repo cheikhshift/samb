@@ -67,6 +67,7 @@ The following package is used to parse this Nginx like configuration language : 
 - Write package tests.
 - Write tutorials/ guides.
 - Introduce conditional operators with server and route directives.
+- A command line to help with adding new handler source.
 
 
 ### More samples
