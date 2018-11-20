@@ -1,6 +1,5 @@
 package transpiler
 
-
 // cmdWrapper is used to generate go source
 // within the generated program package.
 var cmdWrapper string = `// GENERATED CODE, DO NOT EDIT!
@@ -22,7 +21,6 @@ var globalWrapper string = `// Package globals has your applications
 package globals
 
 %s`
-
 
 // configWrapper is used to generate the file
 // with a web server's port and host information
@@ -67,7 +65,7 @@ func catchPanic(w http.ResponseWriter, r * http.Request){
 	}
 }`
 
-// mainWrapper is used to generate the source for your 
+// mainWrapper is used to generate the source for your
 // web server. This launches the generated server source.
 var mainWrapper string = `// GENERATED CODE, DO NOT EDIT!
 package main

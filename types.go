@@ -47,6 +47,8 @@ type Route struct {
 	Go           Go
 }
 
+// Array of Go statements
+// to be executed.
 type Go struct {
 	Do []string
 }
