@@ -10,9 +10,30 @@ import (
 )
 
 func TestTranspile(t *testing.T) {
-	TestExportGlobals(t)
-	TestExportConfig(t)
-	TestExportServer(t)
+
+	for i, p := range testProjects {
+		t.Run(string(i), func(t *testing.T) {
+
+			setupTestEnv()
+			defer teardownTestEnv()
+
+			MakePkgPaths()
+
+			err := Transpile(p)
+
+			if err != nil {
+				panic(err)
+			}
+
+			for _, path := range testExpectedFiles {
+
+				if _, err := os.Stat(path); os.IsNotExist(err) {
+					t.Errorf("File %v was not found", path)
+				}
+
+			}
+		})
+	}
 }
 
 func TestExportGlobals(t *testing.T) {

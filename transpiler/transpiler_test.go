@@ -16,9 +16,11 @@ func TestSetup(t *testing.T) {
 	Setup()
 
 	for _, path := range testExpectedPkgFolders {
-		if _, err := os.Stat(path); os.IsNotExist(err) {
-			t.Errorf("Path %v was not found", path)
-		}
+		t.Run(path, func(t *testing.T) {
+			if _, err := os.Stat(path); os.IsNotExist(err) {
+				t.Errorf("Path %v was not found", path)
+			}
+		})
 	}
 }
 
@@ -30,9 +32,11 @@ func TestMakePkgPaths(t *testing.T) {
 	MakePkgPaths()
 
 	for _, path := range testExpectedPkgFolders {
-		if _, err := os.Stat(path); os.IsNotExist(err) {
-			t.Errorf("Path %v was not found", path)
-		}
+		t.Run(path, func(t *testing.T) {
+			if _, err := os.Stat(path); os.IsNotExist(err) {
+				t.Errorf("Path %v was not found", path)
+			}
+		})
 	}
 }
 
@@ -162,6 +166,25 @@ var Foo = string("Foo")
 
 			
 		if  strings.Contains(r.URL.Path , "/*") {
+		
+
+	}
+}`,
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
+
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/baz_path") {
 		
 
 	}
