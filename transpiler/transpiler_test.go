@@ -1,6 +1,7 @@
 package transpiler
 
 import (
+	"io/ioutil"
 	"os"
 	"testing"
 
@@ -55,86 +56,145 @@ func TestProcessRoute(t *testing.T) {
 
 }
 
-func TestVerifyProviders(t *testing.T) {
+func TestExportRoutes(t *testing.T) {
 
-	providerTests := []struct {
-		name string
-	}{
-		{"Foo"},
-		{"Bar"},
-		{"Baz"},
-		{"Z"},
+	setupTestEnv()
+	defer teardownTestEnv()
+
+	err := os.MkdirAll("./pkg/api/", 0700)
+
+	if err != nil {
+		panic(err)
 	}
 
-	for _, tt := range providerTests {
-		t.Run(tt.name, func(t *testing.T) {
+	expectedHandlers := []string{
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
 
-			err := VerifyProviders(testProject, []string{tt.name})
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/Hello") && r.Method == "POST"{
+		
+
+	}
+}`,
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
+
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/echo") && r.Method == "GET"{
+		
+
+	}
+}`,
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
+
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/with_provider") && r.Method == "PUT"{
+		
+//
+var Foo = string("Foo")
+
+
+	}
+}`,
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
+
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/object/path/res") && r.Method == "DELETE"{
+		
+
+	}
+}`,
+		`//package api contains your web app's handler definitions.
+		// GENERATED CODE, DO NOT EDIT!!
+		package api
+
+		import (
+		
+	)
+
+		// Handles routing of application.
+		func Handler(w http.ResponseWriter, r *http.Request) {
+
+			defer catchPanic(w,r)
+
+			
+		if  strings.Contains(r.URL.Path , "/*") {
+		
+
+	}
+}`,
+	}
+
+	for i, tt := range routeTests {
+		t.Run(tt.route.Path, func(t *testing.T) {
+
+			testProject := &samb.Project{
+				Routes: samb.Routes{
+					Route: []samb.Route{tt.route},
+				},
+				Provider: testProject.Provider,
+			}
+
+			err := ExportRoutes(testProject)
 
 			if err != nil {
-				t.Errorf("got  %v, want %v for provider "+tt.name, err, nil)
+				panic(err)
+			}
+
+			fileBytes, err := ioutil.ReadFile("./pkg/api/handler.go")
+
+			generatedFile := string(fileBytes)
+
+			if generatedFile != expectedHandlers[i] {
+				println(generatedFile)
+				println("///")
+				t.Errorf("got  %v, want %v", generatedFile, expectedHandlers[i])
 			}
 
 		})
 	}
 
 }
-
-func TestGetProviderInits(t *testing.T) {
-	providerTests := []struct {
-		name          string
-		expectedValue string
-	}{
-		{"Foo", "\n//\nvar Foo = string(\"Foo\")\n"},
-		{"Bar", "\n//\nvar Bar = string(\"Bar\")\n"},
-		{"Baz", "\n//\nvar Baz = string(\"Baz\")\n"},
-		{"Z", "\n//\nvar Z = string(\"Z\")\n"},
-	}
-
-	for _, tt := range providerTests {
-		t.Run(tt.name, func(t *testing.T) {
-
-			p := GetProviderInits(testProject, []string{tt.name})
-
-			if p != tt.expectedValue {
-				t.Errorf("got  %v, want %v for provider "+tt.name, p, tt.expectedValue)
-			}
-
-		})
-	}
-}
-
-func TestGetCustomCode(t *testing.T) {
-
-	codeGetTest := []struct {
-		route         samb.Route
-		expectedValue string
-	}{
-		{
-			samb.Route{Go: samb.Go{[]string{"println(\"Foo\")", "pkg.Function(12)"}}},
-			"println(\"Foo\")\npkg.Function(12)\n",
-		},
-		{
-			samb.Route{Go: samb.Go{[]string{"println(\"Baz\")", "pkg.Fn(1)"}}},
-			"println(\"Baz\")\npkg.Fn(1)\n",
-		},
-		{
-			samb.Route{Go: samb.Go{[]string{"i := 0", "return"}}},
-			"i := 0\nreturn\n",
-		},
-	}
-
-	for i, tt := range codeGetTest {
-		t.Run(string(i), func(t *testing.T) {
-
-			p := GetCustomCode(tt.route)
-
-			if p != tt.expectedValue {
-				t.Errorf("got  %v, want %v", p, tt.expectedValue)
-			}
-
-		})
-	}
-}
-
-
