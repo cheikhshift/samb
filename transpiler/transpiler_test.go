@@ -29,7 +29,7 @@ func TestMakePkgPaths(t *testing.T) {
 	setupTestEnv()
 	defer teardownTestEnv()
 
-	MakePkgPaths()
+	makePkgPaths()
 
 	for _, path := range testExpectedPkgFolders {
 		t.Run(path, func(t *testing.T) {
@@ -45,7 +45,7 @@ func TestProcessRoute(t *testing.T) {
 	for _, tt := range routeTests {
 		t.Run(tt.route.Path, func(t *testing.T) {
 
-			route, err := ProcessRoute(testProject, tt.route, "", []string{})
+			route, err := ProcessRoute(&samb.Project{Provider: testProject.Provider}, tt.route, "", []string{})
 
 			if err != nil {
 				panic(err)

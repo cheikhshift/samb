@@ -15,6 +15,8 @@ func TestVerifyProviders(t *testing.T) {
 		{"Bar"},
 		{"Baz"},
 		{"Z"},
+		{"OO"},
+		{"MM"},
 	}
 
 	for _, tt := range providerTests {
@@ -82,6 +84,83 @@ func TestGetCustomCode(t *testing.T) {
 
 			if p != tt.expectedValue {
 				t.Errorf("got  %v, want %v", p, tt.expectedValue)
+			}
+
+		})
+	}
+}
+
+func TestWrapEndpoint(t *testing.T) {
+
+	expectedValues := []string{
+		`
+		if  strings.Contains(r.URL.Path , "/Hello") && r.Method == "POST"{
+		
+	}`,
+		`
+		if  strings.Contains(r.URL.Path , "/echo") && r.Method == "GET"{
+		
+	}`,
+		`
+		if  strings.Contains(r.URL.Path , "/with_provider") && r.Method == "PUT"{
+		
+	}`,
+		`
+		if  strings.Contains(r.URL.Path , "/object/path/res") && r.Method == "DELETE"{
+		
+	}`,
+		`
+		if  strings.Contains(r.URL.Path , "/*") {
+		
+	}`,
+		`
+		if  strings.Contains(r.URL.Path , "/baz_path") {
+		
+	}`,
+	}
+
+	for i, tt := range routeTests {
+		t.Run(string(i), func(t *testing.T) {
+
+			result := WrapEndpoint("", tt.route, "")
+
+			if result != expectedValues[i] {
+				println(result)
+				println("///")
+				t.Errorf("got  %v, want %v", result, expectedValues[i])
+			}
+
+		})
+	}
+}
+
+func TestGetHandler(t *testing.T) {
+
+	blankString := `
+`
+
+	expectedValues := []string{
+		blankString,
+		blankString,
+		`
+//
+var Foo = string("Foo")
+
+`,
+		blankString,
+		blankString,
+		blankString,
+	}
+
+	for i, tt := range routeTests {
+		t.Run(string(i), func(t *testing.T) {
+
+			result := GetHandler(testProject, tt.route, tt.route.Provide)
+
+			if result != expectedValues[i] {
+				println(result)
+				println("///")
+				t.Errorf("got  %v, want %v", result, expectedValues[i])
 			}
 
 		})

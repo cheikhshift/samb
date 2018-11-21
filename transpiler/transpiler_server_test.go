@@ -17,7 +17,7 @@ func TestTranspile(t *testing.T) {
 			setupTestEnv()
 			defer teardownTestEnv()
 
-			MakePkgPaths()
+			makePkgPaths()
 
 			err := Transpile(p)
 
@@ -53,7 +53,7 @@ func TestExportGlobals(t *testing.T) {
 	}{
 		{
 			[]samb.Global{
-				samb.Global{Name: "Foo", Return: "string(\"Foo\")"},
+				{Name: "Foo", Return: "string(\"Foo\")"},
 			},
 			`// Package globals has your applications
 // global variables, exported as package identifiers
@@ -67,8 +67,8 @@ package globals
 		},
 		{
 			[]samb.Global{
-				samb.Global{Name: "Foo", Return: "string(\"Foo\")"},
-				samb.Global{Name: "Bax", Comment: "Sample", Return: "string(\"Bax\")"},
+				{Name: "Foo", Return: "string(\"Foo\")"},
+				{Name: "Bax", Comment: "Sample", Return: "string(\"Bax\")"},
 			},
 			`// Package globals has your applications
 // global variables, exported as package identifiers
@@ -85,8 +85,8 @@ package globals
 		},
 		{
 			[]samb.Global{
-				samb.Global{Name: "Zo", Return: "10"},
-				samb.Global{Name: "Go", Comment: "Go", Return: "string(\"Go\")"},
+				{Name: "Zo", Return: "10"},
+				{Name: "Go", Comment: "Go", Return: "string(\"Go\")"},
 			},
 			`// Package globals has your applications
 // global variables, exported as package identifiers

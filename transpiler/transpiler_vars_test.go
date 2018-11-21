@@ -50,11 +50,13 @@ var testProject = &samb.Project{
 		{Name: "Baz", Type: "string", Return: "string(\"Baz\")"},
 		{Name: "Z", Type: "string", Return: "string(\"Z\")"},
 		{Name: "Bar", Type: "string", Return: "string(\"Bar\")"},
+		{Name: "OO", Type: "string", Return: "string(\"OO\")"},
+		{Name: "MM", Type: "string", Return: "string(\"MM\")"},
 	},
 }
 
 var testProjects = []*samb.Project{
-	&samb.Project{
+	{
 		Provider: []samb.Global{
 			{Name: "Foo", Type: "int", Return: "string(\"Foo\")"},
 			{Name: "Baz", Type: "string", Return: "string(\"Baz\")"},
@@ -62,19 +64,19 @@ var testProjects = []*samb.Project{
 			{Name: "Bar", Type: "string", Return: "string(\"Bar\")"},
 		},
 	},
-	&samb.Project{
+	{
 		Global: []samb.Global{
 			{Name: "Foo", Type: "int", Return: "string(\"Foo\")"},
 		},
 	},
-	&samb.Project{
+	{
 		Package: "sample/test",
 	},
-	&samb.Project{
+	{
 		Routes: samb.Routes{
 			Route: []samb.Route{
-				samb.Route{Path: "Sample", Method: "POST"},
-				samb.Route{Path: "/hello", Method: "PUT"},
+				{Path: "Sample", Method: "POST"},
+				{Path: "/hello", Method: "PUT"},
 			},
 		},
 	},

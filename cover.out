@@ -1,0 +1,27 @@
+mode: set
+github.com/cheikhshift/samb/loader.go:13.42,20.16 4 1
+github.com/cheikhshift/samb/loader.go:24.2,28.17 3 1
+github.com/cheikhshift/samb/loader.go:20.16,22.3 1 0
+github.com/cheikhshift/samb/loader.go:34.31,39.16 3 1
+github.com/cheikhshift/samb/loader.go:43.2,47.16 3 1
+github.com/cheikhshift/samb/loader.go:39.16,41.3 1 0
+github.com/cheikhshift/samb/loader.go:47.16,48.13 1 0
+github.com/cheikhshift/samb/project_funcs.go:10.36,12.29 1 1
+github.com/cheikhshift/samb/project_funcs.go:16.2,16.34 1 1
+github.com/cheikhshift/samb/project_funcs.go:20.2,22.16 2 1
+github.com/cheikhshift/samb/project_funcs.go:26.2,26.30 1 1
+github.com/cheikhshift/samb/project_funcs.go:12.29,14.3 1 0
+github.com/cheikhshift/samb/project_funcs.go:16.34,18.3 1 0
+github.com/cheikhshift/samb/project_funcs.go:22.16,23.13 1 0
+github.com/cheikhshift/samb/project_funcs.go:26.30,32.17 3 1
+github.com/cheikhshift/samb/project_funcs.go:36.3,36.20 1 1
+github.com/cheikhshift/samb/project_funcs.go:32.17,33.14 1 0
+github.com/cheikhshift/samb/project_funcs.go:44.44,56.2 7 1
+github.com/cheikhshift/samb/provider_funcs.go:5.55,7.32 1 1
+github.com/cheikhshift/samb/provider_funcs.go:14.2,14.8 1 1
+github.com/cheikhshift/samb/provider_funcs.go:7.32,8.22 1 1
+github.com/cheikhshift/samb/provider_funcs.go:8.22,10.9 2 1
+github.com/cheikhshift/samb/provider_funcs.go:21.56,23.31 1 1
+github.com/cheikhshift/samb/provider_funcs.go:29.2,29.8 1 1
+github.com/cheikhshift/samb/provider_funcs.go:23.31,24.22 1 1
+github.com/cheikhshift/samb/provider_funcs.go:24.22,25.9 1 1

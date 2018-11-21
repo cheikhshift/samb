@@ -9,7 +9,7 @@ import (
 // MakePkgPaths.
 func Setup() {
 
-	MakePkgPaths()
+	makePkgPaths()
 
 }
 
@@ -19,7 +19,7 @@ func Setup() {
 // working directory. They are as follows :
 // ./pkg/api, ./pkg/globals, ./pkg/method
 //, ./cmd/server
-func MakePkgPaths() {
+func makePkgPaths() {
 	err := os.MkdirAll("./pkg/api", 0700)
 
 	if err != nil {

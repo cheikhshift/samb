@@ -22,6 +22,14 @@ package globals
 
 %s`
 
+// endpointWrapper is used
+// to generate Go conditional statements
+// to be met by request, to execute
+// endpoint handler.
+var endpointWrapper string = `%s{
+		%s
+	}`
+
 // configWrapper is used to generate the file
 // with a web server's port and host information
 // as a variables.

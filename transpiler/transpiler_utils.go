@@ -23,9 +23,7 @@ func WrapEndpoint(path string, r samb.Route, h string) string {
 
 	}
 
-	return fmt.Sprintf(`%s{
-		%s
-	}`, res, h)
+	return fmt.Sprintf(endpointWrapper, res, h)
 }
 
 // GetHandler Generates the Go code executed specified to
