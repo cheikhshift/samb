@@ -72,6 +72,7 @@ The following package is used to parse this Nginx like configuration language : 
 - [ ] A command line to help with adding new handler source.
 - [ ] Onyx command line to write to be transpiled tests with `this Nginx like configuration language`.
 - [ ] Introduce a page directive.
+- [ ] Implement direct deployment to GCP/k8s
 
 
 ### More samples
