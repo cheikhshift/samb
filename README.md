@@ -75,6 +75,8 @@ The following package is used to parse this Nginx like configuration language : 
 - [ ] Implement direct deployment to GCP/AWS/Azure and any VM with SSH.
 
 
+Find sample projects [here](https://github.com/cheikhshift/samb-examples).
+
 ### More samples
 
 ##### Sample Route
