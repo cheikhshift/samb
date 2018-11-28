@@ -31,10 +31,11 @@ func WrapEndpoint(path string, r samb.Route, h string) string {
 // a samb route.
 func GetHandler(p *samb.Project, r samb.Route, providers []string) (handler string) {
 
-	var providerInitializer = GetProviderInits(p, providers)
 	gocode := GetCustomCode(r)
+	endPointCode := gocode + r.Handler
+	var providerInitializer = GetProviderInits(p, providers, endPointCode)
 
-	handler = providerInitializer + gocode + r.Handler
+	handler = providerInitializer + endPointCode
 
 	return
 }

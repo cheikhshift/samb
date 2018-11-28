@@ -3,6 +3,7 @@ package transpiler
 import (
 	"errors"
 	"fmt"
+	"strings"
 
 	"github.com/cheikhshift/samb"
 )
@@ -13,9 +14,10 @@ import (
 // The project will have the information about the provider,
 // and providers is a list of name's of providers to generate
 // code for.
-func GetProviderInits(p *samb.Project, providers []string) (res string) {
+func GetProviderInits(p *samb.Project, providers []string, endPointCode string) (res string) {
 	for _, providerId := range providers {
-		if providerId == "r" || providerId == "w" {
+
+		if providerId == "r" || providerId == "w" || !strings.Contains(endPointCode, providerId) {
 			continue
 		}
 
