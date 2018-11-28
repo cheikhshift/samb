@@ -47,7 +47,7 @@ func TestGetProviderInits(t *testing.T) {
 	for _, tt := range providerTests {
 		t.Run(tt.name, func(t *testing.T) {
 
-			p := GetProviderInits(testProject, []string{tt.name})
+			p := GetProviderInits(testProject, []string{tt.name}, "")
 
 			if p != tt.expectedValue {
 				t.Errorf("got  %v, want %v for provider "+tt.name, p, tt.expectedValue)
