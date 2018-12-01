@@ -65,7 +65,7 @@ The following package is used to parse this Nginx like configuration language : 
 ## Todo
 
 - [ ] Provide better documentation.
-- [ ] Sublime/VSCode text plugins.
+- [x] Sublime/VSCode text plugins. Link to [VScode market listing](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb) (Sublime pending review)
 - [ ] Write package tests.
 - [ ] Write tutorials/ guides.
 - [ ] Introduce conditional operators with server and route directives.
