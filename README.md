@@ -66,11 +66,9 @@ The following package is used to parse this Nginx like configuration language : 
 
 - [ ] Provide better documentation.
 - [x] Sublime/VSCode text plugins. Link to [VScode market listing](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb) (Sublime pending review)
-- [ ] Write package tests.
+- [x] Write package tests.
 - [ ] Write tutorials/ guides.
-- [ ] Introduce conditional operators with server and route directives.
 - [ ] A command line to help with adding new handler source.
-- [ ] Onyx command line to write to be transpiled tests with `this Nginx like configuration language`.
 - [ ] Introduce a page directive.
 - [ ] Implement direct deployment to GCP/AWS/Azure and any VM with SSH.
 
