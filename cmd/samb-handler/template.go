@@ -29,7 +29,6 @@ func Handle%s(w http.ResponseWriter, r *http.Request) {
 	case http.MethodGet:
 		%s(w, r)
 	default:
-		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		w.Write([]byte(%sNotFound))
 	}
