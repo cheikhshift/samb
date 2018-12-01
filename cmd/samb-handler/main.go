@@ -60,7 +60,7 @@ func main() {
 func GenerateHandler(name, v string) (result string) {
 	return fmt.Sprintf(
 		handlerTemplate,
-		name,
+		v + strings.Title(name),
 		v,
 		name,
 		v+strings.Title(name),
