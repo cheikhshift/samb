@@ -61,6 +61,24 @@ The following package is used to parse this Nginx like configuration language : 
 
 [Parth : Path parsing for segment unmarshaling and slicing.](https://github.com/codemodus/parth)
 
+-----
+
+#### Tooling
+
+Here is a list of tools that generate Go code for your SAMB projects.
+
+samb-handler : Generate Go HTTP handlers with the specified parameters.
+	- Install : `go get github.com/cheikhshift/samb/cmd/samb-handler`
+	- Help : Run `samb-handler -h`
+
+samb-provide: Generate and add a provider to your project. This will generate the Go source used with your provider as well.
+	- Install : `go get github.com/cheikhshift/samb/cmd/samb-provide`
+	- Help : Run `samb-provide -h`
+
+samb-medic : Generate recover directive functions for your project.
+	- Install : `go get github.com/cheikhshift/samb/cmd/samb-medic`
+	- Help : Run `samb-medic -h`
+
 
 ## Todo
 
@@ -68,8 +86,7 @@ The following package is used to parse this Nginx like configuration language : 
 - [x] Sublime/VSCode text plugins. Link to [VScode market listing](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb) (Sublime pending review)
 - [x] Write package tests.
 - [ ] Write tutorials/ guides.
-- [ ] A command line to help with adding new handler source.
-- [ ] Introduce a page directive.
+- [x] A command line to help with adding new handler source.
 - [ ] Implement direct deployment to GCP/AWS/Azure and any VM with SSH.
 
 
