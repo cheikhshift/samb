@@ -1,22 +1,34 @@
 package samb
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/recoye/config"
+	"gopkg.in/yaml.v2"
 )
 
-// Load, open a project based on the filesystem
+// Load opens a project based on the filesystem
 // path supplied.
 func Load(path string) (*Project, error) {
 
-	conf := config.New(path)
+	// err will be used to check
+	// for errors on file load.
+	var err error
+	var env = &Project{}
 
-	env := &Project{}
+	var ext = filepath.Ext(path)
 
-	err := conf.Unmarshal(env)
+	switch ext {
+	case ".yml":
+		err = LoadYAML(path, env)
+	default:
+		err = LoadSE(path, env)
+	}
+
 	if err != nil {
 		return nil, err
 	}
@@ -26,6 +38,26 @@ func Load(path string) (*Project, error) {
 	env.ProcessImports()
 
 	return env, nil
+}
+
+// LoadSE loads .se file with SAMB directives.
+func LoadSE(path string, p *Project) error {
+	var conf = config.New(path)
+
+	return conf.Unmarshal(p)
+}
+
+// LoadYAML loads a YAML file with SAMB
+// directives.
+func LoadYAML(path string, p *Project) error {
+
+	data, err := ioutil.ReadFile(path)
+
+	if err != nil {
+		return err
+	}
+
+	return yaml.Unmarshal(data, p)
 }
 
 // chDirRootOf will change the working directory to the directory

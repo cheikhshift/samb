@@ -28,6 +28,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Add this to your server's recover directive : do ", *name + ";" )
+	fmt.Println("Add this to your server's recover directive : do ", *name+";")
 
 }

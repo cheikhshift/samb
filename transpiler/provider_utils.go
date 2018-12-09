@@ -17,8 +17,8 @@ import (
 func GetProviderInits(p *samb.Project, providers []string, endPointCode string) (res string) {
 	for _, providerId := range providers {
 
-		if providerId == "r" || providerId == "w" || 
-		(!strings.Contains(endPointCode, providerId) && len(endPointCode) > 2 ) {
+		if providerId == "r" || providerId == "w" ||
+			(!strings.Contains(endPointCode, providerId) && len(endPointCode) > 2) {
 			continue
 		}
 

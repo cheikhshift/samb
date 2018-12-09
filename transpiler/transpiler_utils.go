@@ -36,7 +36,7 @@ func GetHandler(p *samb.Project, r samb.Route, providers []string) (handler stri
 	var providerInitializer = GetProviderInits(p, providers, endPointCode)
 
 	handler = providerInitializer + endPointCode
-	
+
 	if r.Handler != "" {
 		handler += "\nreturn"
 	}
