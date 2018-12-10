@@ -10,6 +10,8 @@ import (
 	"github.com/cheikhshift/samb/transpiler"
 )
 
+// BuildProject transpiles the specified samb
+// project.
 func BuildProject(file *samb.Project) {
 	transpiler.Setup()
 
@@ -37,6 +39,8 @@ func formatCode() {
 	}
 }
 
+// ManageImports runs `goimports`
+// in the current directory.
 func ManageImports() {
 	cmd := exec.Command("goimports", "-w", "./")
 
@@ -47,6 +51,9 @@ func ManageImports() {
 	}
 }
 
+
+// NewServer saves .se (SAMB) starter
+// files to the current directory.
 func NewServer(p string) {
 
 	ioutil.WriteFile("./server.se", []byte(fmt.Sprintf(serverTemplate, p)), 0700)
