@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"strings"
+
+	"github.com/cheikhshift/samb/tools"
 )
 
 func main() {
@@ -53,7 +54,7 @@ func main() {
 		panic(err)
 	}
 
-	manageImports()
+	tools.ManageImports()
 
 }
 
@@ -99,14 +100,4 @@ func GenerateRouter(name string) (result string) {
 
 	return
 
-}
-
-func manageImports() {
-	cmd := exec.Command("goimports", "-w", "./")
-
-	err := cmd.Run()
-
-	if err != nil {
-		panic(err)
-	}
 }

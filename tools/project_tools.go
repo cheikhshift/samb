@@ -24,7 +24,7 @@ func BuildProject(file *samb.Project) {
 	formatCode()
 
 	log.Println("Adding imports")
-	manageImports()
+	ManageImports()
 }
 
 func formatCode() {
@@ -37,7 +37,7 @@ func formatCode() {
 	}
 }
 
-func manageImports() {
+func ManageImports() {
 	cmd := exec.Command("goimports", "-w", "./")
 
 	err := cmd.Run()
