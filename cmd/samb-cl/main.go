@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/cheikhshift/samb"
+	"github.com/cheikhshift/samb/tools"
 )
 
 func main() {
@@ -22,7 +23,7 @@ func main() {
 		if len(args) == 0 {
 			panic("Please provide a Go package import path for your new project.")
 		}
-		newServer(args[0])
+		tools.NewServer(args[0])
 	}
 
 	err := os.Chdir(*projectPath)
@@ -37,6 +38,6 @@ func main() {
 		panic(err)
 	}
 
-	buildProject(file)
+	tools.BuildProject(file)
 
 }

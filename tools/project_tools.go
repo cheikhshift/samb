@@ -1,6 +1,8 @@
-package main
+package tools
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 	"os/exec"
 
@@ -8,7 +10,7 @@ import (
 	"github.com/cheikhshift/samb/transpiler"
 )
 
-func buildProject(file *samb.Project) {
+func BuildProject(file *samb.Project) {
 	transpiler.Setup()
 
 	err := transpiler.Transpile(file)
@@ -45,6 +47,9 @@ func manageImports() {
 	}
 }
 
-func newServer(p string) {
-	println(p)
+func NewServer(p string) {
+
+	ioutil.WriteFile("./server.se", []byte(fmt.Sprintf(serverTemplate, p)), 0700)
+	ioutil.WriteFile("./endpoints.se", []byte(routeTemplate), 0700)
+	ioutil.WriteFile("./providers.se", []byte(providerTemplate), 0700)
 }

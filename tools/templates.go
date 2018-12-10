@@ -1,4 +1,4 @@
-package main
+package tools
 
 var serverTemplate = `# Go package import path of your project.
 package %s;
