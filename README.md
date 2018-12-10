@@ -2,10 +2,9 @@
 
 [![Build Status](https://travis-ci.org/cheikhshift/samb.svg?branch=master)](https://travis-ci.org/cheikhshift/samb) [![GoDoc](https://godoc.org/github.com/cheikhshift/samb?status.svg)](https://godoc.org/github.com/cheikhshift/samb) [![Go Report Card](https://goreportcard.com/badge/github.com/cheikhshift/samb)](https://goreportcard.com/report/github.com/cheikhshift/samb) [![Maintainability](https://api.codeclimate.com/v1/badges/062da952018e56ea46d5/maintainability)](https://codeclimate.com/github/cheikhshift/samb/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/062da952018e56ea46d5/test_coverage)](https://codeclimate.com/github/cheikhshift/samb/test_coverage)
 
-Go HTTP route management with Nginx like config language. The aim of `samb` is to provide a web server implementation
-abstraction, where users can specify which Go handler/function should process a request for a request path.
+The aim of `samb` is to provide a web server implementation abstraction, where users can specify which Go handler/function should be used to process a request path. `samb` provides syntax support for languages similar to those used to write infrastructure as code. 
 
-Here is a sample server definition :
+Here is a sample server definition (in Nginx like language) :
 
 ```
 server {
@@ -28,6 +27,40 @@ server {
     }  
 }
 
+```
+
+In YAML:
+
+```
+# Go package import path of your project.
+package: github.com/cheikhshift/samb-examples/yaml-example
+
+# import providers
+require: ["./providers.se"]
+
+
+# Globals are exported via package 
+# globals
+global:
+  - name: Foo
+    type : bool
+    # Adding comments to exported variable.
+    comment: Foo decides if a process should run
+    return : false
+  - name: AnotherVariable
+    type : bool
+    return: true
+
+server: 
+  host: 127.0.0.1
+  port: 8081
+  # Import web route definitions
+  require : ["./endpoints.yml"]
+
+  start:
+    do:
+      - println("HelloWorld")
+      - println("Starting...")
 ```
 
 ## Install
