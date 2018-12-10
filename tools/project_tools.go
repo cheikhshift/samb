@@ -1,3 +1,6 @@
+// package tools has functions that automatically
+// format Go syntax and add import
+// paths.
 package tools
 
 import (
