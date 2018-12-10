@@ -121,7 +121,7 @@ samb-medic : Generate recover directive functions for your project.
 
 ## Todo
 
-- [ ] Provide better documentation.
+- [x] Provide better documentation. Checkout the [wiki](https://github.com/cheikhshift/samb/wiki).
 - [x] Sublime/VSCode text plugins. Link to [VScode market listing](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb) (Sublime pending review)
 - [x] Write package tests.
 - [ ] Write tutorials/ guides.
