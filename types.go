@@ -84,3 +84,11 @@ type Documentation struct {
 	// should be used.
 	Alias string
 }
+
+type Templates struct {
+	Template []Template
+}
+
+type Template struct {
+	FilePath, Type, Name string
+}
