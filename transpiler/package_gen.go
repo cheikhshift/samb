@@ -38,6 +38,12 @@ func makePkgPaths() {
 		panic(err)
 	}
 
+	err = os.MkdirAll("./pkg/hooks", 0700)
+
+	if err != nil {
+		panic(err)
+	}
+
 	err = os.MkdirAll("./cmd/server", 0700)
 
 	if err != nil {

@@ -3,7 +3,7 @@ package transpiler
 // cmdWrapper is used to generate go source
 // within the generated program package.
 var cmdWrapper string = `// GENERATED CODE, DO NOT EDIT!
-package main
+package hooks
 
 import (
 		%s
@@ -79,11 +79,12 @@ var mainWrapper string = `// GENERATED CODE, DO NOT EDIT!
 package main
 
 import "%s/pkg/api"
+import "%s/pkg/hooks"
 import "context"
 
 func main(){
 
-	Start()
+	hooks.Start()
 
 	stop := make(chan os.Signal, 1)
 
@@ -112,7 +113,7 @@ func cleanUp(h *http.Server){
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 	h.Shutdown(ctx)
 
-	Stop()
+	hooks.Stop()
 	log.Println("Server gracefully stopped")
 	
 }`

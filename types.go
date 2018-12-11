@@ -7,13 +7,13 @@ type Project struct {
 	Require, Import []string
 	// Provider defines the providers
 	// to be used by HTTP routes.
-	Provider        []Global
-	Package         string
-	Author          string
-	Packages        []string
-	Routes          Routes
-	Templates       Templates
-	Global          []Global
+	Provider  []Global
+	Package   string
+	Author    string
+	Packages  []string
+	Routes    Routes
+	Templates Templates
+	Global    []Global
 }
 
 type Global struct {
@@ -38,7 +38,7 @@ type Server struct {
 	Shutdown Go
 }
 
-// Routes holds a group of 
+// Routes holds a group of
 // HTTP routes.
 type Routes struct {
 	Route   []Route
@@ -51,18 +51,18 @@ type Routes struct {
 // and the handler (Go code) to be executed.
 type Route struct {
 	Method, Path string
-	// Provide is a list of 
+	// Provide is a list of
 	// provider names to be used by request.
-	Provide      []string
-	Route        []Route
-	Handler      string
+	Provide []string
+	Route   []Route
+	Handler string
 	// Go specifies Go code
 	// to be ran prior to invocation
 	// of handler. This code must respect
 	// the scope of a Go HTTP handler function,
 	// with variables r and w in scope.
-	Go           Go
-	Doc          Documentation
+	Go  Go
+	Doc Documentation
 }
 
 // Array of Go statements
@@ -70,7 +70,6 @@ type Route struct {
 type Go struct {
 	Do []string
 }
-
 
 // Documentation will be used
 // to generate HTML documentation

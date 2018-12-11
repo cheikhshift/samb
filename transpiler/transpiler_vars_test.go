@@ -11,8 +11,22 @@ var testExpectedFiles = []string{
 	"./pkg/globals/variables.go",
 	"./pkg/api/handler.go",
 	"./cmd/server/main.go",
-	"./cmd/server/launch.go",
-	"./cmd/server/stop.go",
+	"./pkg/hooks/launch.go",
+	"./pkg/hooks/stop.go",
+}
+
+func setupHookEnv(){
+	err := os.MkdirAll("./pkg/hooks/", 0700)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.MkdirAll("./cmd/server/", 0700)
+
+	if err != nil {
+		panic(err)
+	}
 }
 
 func setupTestEnv() {

@@ -11,14 +11,14 @@ import (
 
 // ExportServer converts your server's
 // start directive to a function, executed on
-// server start. The file is saved to ./cmd/server/launch.go
+// server start. The file is saved to ./pkg/hooks/launch.go
 func ExportServer(p *samb.Project) error {
 
 	startCode := strings.Join(p.Server.Start.Do, "\n")
 
 	startCode = fmt.Sprintf(cmdWrapper, strings.Join(p.Import, "\n"), "Start", startCode)
 
-	err := ioutil.WriteFile("./cmd/server/launch.go", []byte(startCode), 0700)
+	err := ioutil.WriteFile("./pkg/hooks/launch.go", []byte(startCode), 0700)
 
 	if err != nil {
 		return err
@@ -30,13 +30,13 @@ func ExportServer(p *samb.Project) error {
 // ExportExitCode converts your server's
 // shutdown directive to a function, executed on
 // server termination. The file is saved to
-// ./cmd/server/stop.go
+// ./pkg/hooks/stop.go
 func ExportExitCode(p *samb.Project) error {
 	shutdownCode := strings.Join(p.Server.Shutdown.Do, "\n")
 
 	shutdownCode = fmt.Sprintf(cmdWrapper, strings.Join(p.Import, "\n"), "Stop", shutdownCode)
 
-	err := ioutil.WriteFile("./cmd/server/stop.go", []byte(shutdownCode), 0700)
+	err := ioutil.WriteFile("./pkg/hooks/stop.go", []byte(shutdownCode), 0700)
 
 	if err != nil {
 		return err
@@ -50,7 +50,7 @@ func ExportExitCode(p *samb.Project) error {
 // to ./cmd/server/main.go
 func ExportMain(p *samb.Project) error {
 
-	mainCode := fmt.Sprintf(mainWrapper, p.Package)
+	mainCode := fmt.Sprintf(mainWrapper, p.Package, p.Package)
 
 	err := ioutil.WriteFile("./cmd/server/main.go", []byte(mainCode), 0700)
 

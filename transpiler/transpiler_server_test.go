@@ -130,12 +130,9 @@ func TestExportServer(t *testing.T) {
 
 	setupTestEnv()
 	defer teardownTestEnv()
+	
+	setupHookEnv()
 
-	err := os.MkdirAll("./cmd/server/", 0700)
-
-	if err != nil {
-		panic(err)
-	}
 
 	exportStartTests := []struct {
 		start          samb.Go
@@ -174,7 +171,7 @@ func TestExportServer(t *testing.T) {
 				panic(err)
 			}
 
-			fileBytes, err := ioutil.ReadFile("./cmd/server/launch.go")
+			fileBytes, err := ioutil.ReadFile("./pkg/hooks/launch.go")
 
 			generatedFile = string(fileBytes)
 
@@ -191,11 +188,8 @@ func TestExportExitCode(t *testing.T) {
 	setupTestEnv()
 	defer teardownTestEnv()
 
-	err := os.MkdirAll("./cmd/server/", 0700)
 
-	if err != nil {
-		panic(err)
-	}
+	setupHookEnv()
 
 	exportExitTests := []struct {
 		exit           samb.Go
@@ -234,7 +228,7 @@ func TestExportExitCode(t *testing.T) {
 				panic(err)
 			}
 
-			fileBytes, err := ioutil.ReadFile("./cmd/server/stop.go")
+			fileBytes, err := ioutil.ReadFile("./pkg/hooks/stop.go")
 
 			generatedFile = string(fileBytes)
 
@@ -252,35 +246,46 @@ func TestExportMain(t *testing.T) {
 	setupTestEnv()
 	defer teardownTestEnv()
 
-	err := os.MkdirAll("./cmd/server/", 0700)
+	setupHookEnv()
 
-	if err != nil {
-		panic(err)
-	}
-
-	exportExitTests := []struct {
+	exportMainTests := []struct {
 		pkg            string
 		expectedOutput string
 	}{
 		{
 			"virtual/pkg/v6/sample",
-			fmt.Sprintf(mainWrapper, "virtual/pkg/v6/sample"),
+			fmt.Sprintf(
+				mainWrapper,
+				"virtual/pkg/v6/sample",
+				"virtual/pkg/v6/sample",
+				),
 		},
 		{
 			"virtual/v6/sample",
-			fmt.Sprintf(mainWrapper, "virtual/v6/sample"),
+			fmt.Sprintf(
+				mainWrapper,
+				"virtual/v6/sample",
+				"virtual/v6/sample",
+				),
 		},
 		{
 			"virtual/v9/sample",
-			fmt.Sprintf(mainWrapper, "virtual/v9/sample"),
+			fmt.Sprintf(mainWrapper, 
+				"virtual/v9/sample",
+				"virtual/v9/sample",
+			),
 		},
 		{
 			"github.com/cheikhshift/samb",
-			fmt.Sprintf(mainWrapper, "github.com/cheikhshift/samb"),
+			fmt.Sprintf(
+				mainWrapper,
+				"github.com/cheikhshift/samb",
+				"github.com/cheikhshift/samb",
+			),
 		},
 	}
 
-	for i, tt := range exportExitTests {
+	for i, tt := range exportMainTests {
 		t.Run(string(i), func(t *testing.T) {
 
 			var generatedFile string

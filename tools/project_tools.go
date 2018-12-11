@@ -54,7 +54,6 @@ func ManageImports() {
 	}
 }
 
-
 // NewServer saves .se (SAMB) starter
 // files to the current directory.
 func NewServer(p string) {
