@@ -60,5 +60,5 @@ func writeMainFile(file *samb.Project) error {
 }
 
 func writeConfig() error {
-	return ioutil.WriteFile("./cmd/appengine/app.yml", appEngineConfigTemplate, 0700)
+	return ioutil.WriteFile("./cmd/appengine/app.yaml", appEngineConfigTemplate, 0700)
 }

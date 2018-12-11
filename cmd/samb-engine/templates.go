@@ -40,10 +40,6 @@ func cleanUp(h *http.Server){
 }`
 
 var appEngineConfigTemplate []byte = []byte(`# Generated Code, edit, if not regenerating ;)
+env: flex
 runtime: go
-api_version: go1
-
-handlers:
-- url: /.*
-  script: _go_app
 `)
