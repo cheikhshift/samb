@@ -20,7 +20,7 @@ func main(){
 	
 	go func() {
 		<-stop
-		cleanUp(h)
+		cleanUp()
 	}()
 
 	
@@ -28,14 +28,10 @@ func main(){
 	appengine.Main()
 }
 
-func cleanUp(h *http.Server){
-	log.Println("\nShutting down the server...")
-
-	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
-	h.Shutdown(ctx)
+func cleanUp(){
 
 	hooks.Stop()
-	log.Println("Server gracefully stopped")
+	log.Println("App gracefully stopped")
 	
 }`
 
