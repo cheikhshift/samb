@@ -8,7 +8,9 @@
 - Nest API routes without long path prefixes.
 - Catch request runtime panics. 
 - Generate Go code following guidelines.
-- Library to use `samb` as you wish.
+- A tested library to use `samb` as you wish.
+
+Once you finish writing your code, you may then, deploy your project to your cloud provider of choice. 
 
 Here is a sample server definition (in Nginx like language) :
 
@@ -107,16 +109,19 @@ The following package is used to parse this Nginx like configuration language : 
 Here is a list of tools that generate Go code for your SAMB projects.
 
 samb-handler : Generate Go HTTP handlers with the specified parameters.
-	- Install : `go get github.com/cheikhshift/samb/cmd/samb-handler`
-	- Help : Run `samb-handler -h`
+
+- Install : `go get github.com/cheikhshift/samb/cmd/samb-handler`
+- Help : Run `samb-handler -h`
 
 samb-provide: Generate and add a provider to your project. This will generate the Go source used with your provider as well.
-	- Install : `go get github.com/cheikhshift/samb/cmd/samb-provide`
-	- Help : Run `samb-provide -h`
+
+- Install : `go get github.com/cheikhshift/samb/cmd/samb-provide`
+- Help : Run `samb-provide -h`
 
 samb-medic : Generate recover directive functions for your project.
-	- Install : `go get github.com/cheikhshift/samb/cmd/samb-medic`
-	- Help : Run `samb-medic -h`
+	
+- Install : `go get github.com/cheikhshift/samb/cmd/samb-medic`
+- Help : Run `samb-medic -h`
 
 
 ## Todo
