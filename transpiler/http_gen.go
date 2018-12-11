@@ -77,7 +77,7 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 
 	h := GetHandler(p, r, providers)
 
-	def = WrapEndpoint(path, r, h+def)
+	def = WrapEndpoint(path, r, def + h)
 
 	return
 }
