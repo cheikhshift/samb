@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/cheikhshift/samb"
+	"github.com/cheikhshift/samb/tools"
 )
 
 func main() {
@@ -45,6 +46,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	tools.ManageImports()
 
 }
 
