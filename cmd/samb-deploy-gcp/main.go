@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"log"
+	"fmt"
 	"os"
 	"os/exec"
 )
@@ -46,7 +46,7 @@ func newProject() {
 		panic(err)
 	}
 
-	log.Print(string(res))
+	fmt.Print(string(res))
 }
 
 func deployProject() {
@@ -59,5 +59,5 @@ func deployProject() {
 		panic(err)
 	}
 
-	log.Print(string(res))
+	fmt.Print(string(res))
 }

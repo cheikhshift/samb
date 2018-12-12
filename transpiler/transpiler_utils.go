@@ -14,7 +14,7 @@ import (
 // which condition is evaluated.
 func WrapEndpoint(path string, r samb.Route, h string) string {
 	res := fmt.Sprintf(`
-		if  strings.Contains(r.URL.Path , "%s") `, path+r.Path)
+		if  basePath := "%s"; strings.Contains(r.URL.Path , basePath) `, path+r.Path)
 
 	if r.Method != "" &&
 		r.Method != "*" {
@@ -38,7 +38,7 @@ func GetHandler(p *samb.Project, r samb.Route, providers []string) (handler stri
 	handler = providerInitializer + endPointCode
 
 	if r.Handler != "" {
-		handler += "\nreturn"
+		handler = "\n\ntools.ShortenPath(basePath, r)\n" + handler + "\nreturn"
 	}
 
 	return

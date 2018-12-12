@@ -94,27 +94,27 @@ func TestWrapEndpoint(t *testing.T) {
 
 	expectedValues := []string{
 		`
-		if  strings.Contains(r.URL.Path , "/Hello") && r.Method == "POST"{
+		if  basePath := "/Hello"; strings.Contains(r.URL.Path , basePath) && r.Method == "POST"{
 		
 	}`,
 		`
-		if  strings.Contains(r.URL.Path , "/echo") && r.Method == "GET"{
+		if  basePath := "/echo"; strings.Contains(r.URL.Path , basePath) && r.Method == "GET"{
 		
 	}`,
 		`
-		if  strings.Contains(r.URL.Path , "/with_provider") && r.Method == "PUT"{
+		if  basePath := "/with_provider"; strings.Contains(r.URL.Path , basePath) && r.Method == "PUT"{
 		
 	}`,
 		`
-		if  strings.Contains(r.URL.Path , "/object/path/res") && r.Method == "DELETE"{
+		if  basePath := "/object/path/res"; strings.Contains(r.URL.Path , basePath) && r.Method == "DELETE"{
 		
 	}`,
 		`
-		if  strings.Contains(r.URL.Path , "/*") {
+		if  basePath := "/*"; strings.Contains(r.URL.Path , basePath) {
 		
 	}`,
 		`
-		if  strings.Contains(r.URL.Path , "/baz_path") {
+		if  basePath := "/baz_path"; strings.Contains(r.URL.Path , basePath) {
 		
 	}`,
 	}

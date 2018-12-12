@@ -86,7 +86,7 @@ func TestExportRoutes(t *testing.T) {
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/Hello") && r.Method == "POST"{
+		if  basePath := "/Hello"; strings.Contains(r.URL.Path , basePath) && r.Method == "POST"{
 		
 
 	}
@@ -105,7 +105,7 @@ func TestExportRoutes(t *testing.T) {
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/echo") && r.Method == "GET"{
+		if  basePath := "/echo"; strings.Contains(r.URL.Path , basePath) && r.Method == "GET"{
 		
 
 	}
@@ -124,7 +124,7 @@ func TestExportRoutes(t *testing.T) {
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/with_provider") && r.Method == "PUT"{
+		if  basePath := "/with_provider"; strings.Contains(r.URL.Path , basePath) && r.Method == "PUT"{
 		
 //
 var Foo = string("Foo")
@@ -146,7 +146,7 @@ var Foo = string("Foo")
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/object/path/res") && r.Method == "DELETE"{
+		if  basePath := "/object/path/res"; strings.Contains(r.URL.Path , basePath) && r.Method == "DELETE"{
 		
 
 	}
@@ -165,7 +165,7 @@ var Foo = string("Foo")
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/*") {
+		if  basePath := "/*"; strings.Contains(r.URL.Path , basePath) {
 		
 
 	}
@@ -184,7 +184,7 @@ var Foo = string("Foo")
 			defer catchPanic(w,r)
 
 			
-		if  strings.Contains(r.URL.Path , "/baz_path") {
+		if  basePath := "/baz_path"; strings.Contains(r.URL.Path , basePath) {
 		
 
 	}
