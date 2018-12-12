@@ -96,7 +96,9 @@ Run the following command to convert your directives into Go code.
 This will convert your directives into a Go library to handle your HTTP routes. A command will also be generated to launch your server, you can find the source code at `<NEW DIR PATH>/cmd/server`. 
 
 ## About parser
-The following package is used to parse this Nginx like configuration language : [github.com/recoye/config](https://github.com/recoye/config), Nginx configuration style parser with golang
+The following package is used to parse this Nginx like configuration language : [github.com/recoye/config](https://github.com/recoye/config), Nginx configuration style parser with golang.
+
+The following package is used to parse YAML : [gopkg.in/yaml.v2](https://gopkg.in/yaml.v2)
 
 ## Additional packages
 
