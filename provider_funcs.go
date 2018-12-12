@@ -4,6 +4,10 @@ package samb
 // has a provider with the specified name.
 func (p *Project) HasProvider(name string) (has bool) {
 
+	if name == "r" || name == "w" {
+		return true
+	}
+
 	for _, pr := range p.Provider {
 		if pr.Name == name {
 			has = true
