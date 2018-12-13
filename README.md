@@ -13,66 +13,8 @@
 Once you finish writing your code, you may then, deploy your project to your cloud provider of choice. 
 
 ### Documentation
-Learn more about `samb` code generation : [here](https://github.com/cheikhshift/samb/wiki).
+Learn more about `samb` code generation : [here](https://github.com/cheikhshift/samb/wiki). Scroll down to find more samples.
 
-Here is a sample server definition (in Nginx like language) :
-
-```
-server {
-    host 127.0.0.1;
-    port 8080;
-
-    # Import web route definitions
-    require "./endpoints.se";
-
-
-    start {
-    	do println("Hello");
-    	do println("Hello again");
-    }
-
-    shutdown {
-	# directive do will execute passed
-	# golang code
-    	do println("Bye");
-    }  
-}
-
-```
-
-In YAML:
-
-```
-# Go package import path of your project.
-package: github.com/cheikhshift/samb-examples/yaml-example
-
-# import providers
-require: ["./providers.se"]
-
-
-# Globals are exported via package 
-# globals
-global:
-  - name: Foo
-    type : bool
-    # Adding comments to exported variable.
-    comment: Foo decides if a process should run
-    return : false
-  - name: AnotherVariable
-    type : bool
-    return: true
-
-server: 
-  host: 127.0.0.1
-  port: 8081
-  # Import web route definitions
-  require : ["./endpoints.yml"]
-
-  start:
-    do:
-      - println("HelloWorld")
-      - println("Starting...")
-```
 
 ## Install
 
@@ -80,6 +22,7 @@ server:
 
 - `samb` requires Go +v1.8
 - [dep](https://github.com/golang/dep) (Dependency management)
+- `$GOPATH` environment variable set.
 
 ```
 go get github.com/cheikhshift/samb/cmd/samb-cl
@@ -142,11 +85,69 @@ samb-medic : Generate recover directive functions for your project.
 - [ ] Implement direct deployment to GCP/AWS/Azure and ~~any VM with SSH~~.
 
 
-Find sample projects [here](https://github.com/cheikhshift/samb-examples).
+### Samples
 
-### More samples
+Find more sample projects [here](https://github.com/cheikhshift/samb-examples).
+Here is a sample server definition (in Nginx like language) :
 
-##### Sample Route
+```
+server {
+    host 127.0.0.1;
+    port 8080;
+
+    # Import web route definitions
+    require "./endpoints.se";
+
+
+    start {
+    	do println("Hello");
+    	do println("Hello again");
+    }
+
+    shutdown {
+	# directive do will execute passed
+	# golang code
+    	do println("Bye");
+    }  
+}
+
+```
+
+In YAML:
+
+```
+# Go package import path of your project.
+package: github.com/cheikhshift/samb-examples/yaml-example
+
+# import providers
+require: ["./providers.se"]
+
+
+# Globals are exported via package 
+# globals
+global:
+  - name: Foo
+    type : bool
+    # Adding comments to exported variable.
+    comment: Foo decides if a process should run
+    return : false
+  - name: AnotherVariable
+    type : bool
+    return: true
+
+server: 
+  host: 127.0.0.1
+  port: 8081
+  # Import web route definitions
+  require : ["./endpoints.yml"]
+
+  start:
+    do:
+      - println("HelloWorld")
+      - println("Starting...")
+```
+
+##### Sample Route (file named endpoints.se)
 
 ```
 # Routes' definition
