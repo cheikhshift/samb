@@ -4,14 +4,15 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"os/exec"
+
+	"github.com/cheikhshift/gos/core"
 )
 
 func main() {
 
 	projectPath := flag.String("project", "./", "filesystem path of samb project")
 
-	createProject := flag.Bool("new", false, "Specify if command should create a new project")
+	clean := flag.Bool("clean", false, "Remove cached dependencies")
 
 	flag.Parse()
 
@@ -27,37 +28,54 @@ func main() {
 		panic(err)
 	}
 
-	if *createProject {
-
-		newProject()
+	if *clean {
+		cleanDeps()
 		return
 	}
 
-	deployProject()
-}
+	if _, err := os.Stat("./vendor"); os.IsNotExist(err) {
+		// ./vendor does not exist
+		runGoDep()
+	}
 
-func newProject() {
 
-	cmd := exec.Command("gcloud", "app", "create", "--quiet")
-
-	res, err := cmd.Output()
+	res, err := core.RunCmdSmart("gcloud app deploy --quiet")
 
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Print(string(res))
+	fmt.Print(res)
 }
 
-func deployProject() {
+func runGoDep() {
 
-	cmd := exec.Command("gcloud", "app", "deploy", "--quiet")
-
-	res, err := cmd.Output()
+	res, err := core.RunCmdSmart("dep init -gopath")
 
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Print(string(res))
+	fmt.Print(res)
+}
+
+func cleanDeps(){
+
+	err := os.RemoveAll("./vendor")
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.RemoveAll("./Gopkg.lock")
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.RemoveAll("./Gopkg.toml")
+
+	if err != nil {
+		panic(err)
+	}
 }

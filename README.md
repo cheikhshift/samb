@@ -12,6 +12,9 @@
 
 Once you finish writing your code, you may then, deploy your project to your cloud provider of choice. 
 
+### Documentation
+Learn more about `samb` code generation : [here](https://github.com/cheikhshift/samb/wiki).
+
 Here is a sample server definition (in Nginx like language) :
 
 ```
@@ -73,7 +76,10 @@ server:
 
 ## Install
 
-`samb` requires Go +v1.8
+#### Requirements
+
+- `samb` requires Go +v1.8
+- [dep](https://github.com/golang/dep) (Dependency management)
 
 ```
 go get github.com/cheikhshift/samb/cmd/samb-cl

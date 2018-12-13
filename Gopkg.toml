@@ -26,6 +26,10 @@
 
 
 [[constraint]]
+  name = "github.com/cheikhshift/gos"
+  version = "0.6.2"
+
+[[constraint]]
   branch = "master"
   name = "github.com/recoye/config"
 
