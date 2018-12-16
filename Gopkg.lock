@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/adlane/exec"
+  packages = ["."]
+  revision = "bf2ccecd9b4d2dff9e3deba15afd928eaf3e7455"
+
+[[projects]]
   name = "github.com/cheikhshift/gos"
   packages = ["core"]
   revision = "5078582c5f08f5b4a55cf45b9d4124760915d653"
@@ -41,7 +47,7 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "586ba8c9bb141bbbea1ffb47b201443fd43385dd"
+  revision = "4d1cda033e0619309c606fc686de3adcf599539e"
 
 [[projects]]
   name = "gopkg.in/yaml.v2"
@@ -52,6 +58,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1f98386fb23309767e47bccdbdf2904195bc9089e5f7d9a80d9a3b69f6d613d2"
+  inputs-digest = "0a016cc3fb5f17dd3ea0bc2de0c73dfad2ecd0271b6043e0a6198f40a9245c5e"
   solver-name = "gps-cdcl"
   solver-version = 1
