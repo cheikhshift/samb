@@ -63,6 +63,11 @@ type Route struct {
 	// with variables r and w in scope.
 	Go  Go
 	Doc Documentation
+	// Strict specifies
+	// if route should only be invoked
+	// if the request path matches this
+	// routes' path
+	Strict bool
 }
 
 // Array of Go statements

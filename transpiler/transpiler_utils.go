@@ -16,6 +16,11 @@ func WrapEndpoint(path string, r samb.Route, h string) string {
 	res := fmt.Sprintf(`
 		if  basePath := "%s"; strings.Contains(r.URL.Path , basePath) `, path+r.Path)
 
+	if r.Strict {
+		res = fmt.Sprintf(`
+		if  basePath := "%s"; r.URL.Path == basePath `, path+r.Path)
+	}
+
 	if r.Method != "" &&
 		r.Method != "*" {
 
