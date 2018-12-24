@@ -12,6 +12,11 @@
 
 Once you finish writing your code, you may then, deploy your project to your cloud provider of choice. 
 
+### Editor Plugins :
+
+- [VScode](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb)
+- [Sublime 3](https://packagecontrol.io/packages/SAMB)
+
 ### Documentation
 Learn more about `samb` code generation : [here](https://github.com/cheikhshift/samb/wiki). Scroll down to find more samples.
 
@@ -78,7 +83,7 @@ samb-medic : Generate recover directive functions for your project.
 ## Todo
 
 - [x] Provide better documentation. Checkout the [wiki](https://github.com/cheikhshift/samb/wiki).
-- [x] Sublime/VSCode text plugins. Link to [VScode market listing](https://marketplace.visualstudio.com/items?itemName=GopherSauce.samb) (Sublime pending review)
+- [x] Sublime/VSCode text plugins.
 - [x] Write package tests.
 - [ ] Write tutorials/ guides.
 - [x] A command line to help with adding new handler source.
