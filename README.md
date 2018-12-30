@@ -87,7 +87,7 @@ samb-medic : Generate recover directive functions for your project.
 - [x] Write package tests.
 - [ ] Write tutorials/ guides.
 - [x] A command line to help with adding new handler source.
-- [ ] Implement direct deployment to GCP/AWS/Azure and ~~any VM with SSH~~.
+- [x] Implement direct deployment to GCP App engine.
 
 
 ### Samples
