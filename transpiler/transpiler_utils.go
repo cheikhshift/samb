@@ -34,16 +34,15 @@ func WrapEndpoint(path string, r samb.Route, h string) string {
 // GetHandler Generates the Go code executed specified to
 // be executed by
 // a samb route.
-func GetHandler(p *samb.Project, r samb.Route, providers []string) (handler string) {
+func GetHandler(p *samb.Project, r samb.Route, providers []string) (middleware, handler string) {
 
 	gocode := GetCustomCode(r)
-	endPointCode := gocode + r.Handler
-	var providerInitializer = GetProviderInits(p, providers, endPointCode)
+	var providerInitializer = GetProviderInits(p, providers, gocode + r.Handler)
 
-	handler = providerInitializer + endPointCode
+	middleware = providerInitializer + gocode
 
 	if r.Handler != "" {
-		handler = "\n\ntools.ShortenPath(basePath, r)\n" + handler + "\nreturn"
+		handler = "\n\ntools.ShortenPath(basePath, r)\n" + r.Handler + "\nreturn"
 	}
 
 	return

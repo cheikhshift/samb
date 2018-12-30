@@ -49,6 +49,10 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 
 	providers = append(providers, r.Provide...)
 
+	if len(r.Require) > 0 {
+		r.Route = ImportRoutes(r)
+	}
+
 	if len(r.Route) > 0 {
 
 		newRoot := path + r.Path
@@ -75,9 +79,27 @@ func ProcessRoute(p *samb.Project, r samb.Route, path string, providers []string
 		return
 	}
 
-	h := GetHandler(p, r, providers)
+	middleware,h := GetHandler(p, r, providers)
 
-	def = WrapEndpoint(path, r, def + h)
+	def = WrapEndpoint(path, r,  middleware + def + h)
+
+	return
+}
+
+// ImportRoutes will get the route definitions
+// specfied by route field Require
+func ImportRoutes(r samb.Route) (result []samb.Route) {
+
+	for _,req := range r.Require {
+
+		file, err := samb.Load(req)
+
+		if err != nil {
+			panic(err)
+		}
+
+		result = append(result,file.Routes.Route...)
+	}
 
 	return
 }

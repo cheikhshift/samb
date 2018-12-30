@@ -68,6 +68,9 @@ type Route struct {
 	// if the request path matches this
 	// routes' path
 	Strict bool
+	// Require will import and nest the
+	// routes from the specified SAMB sources.
+	Require []string
 }
 
 // Array of Go statements

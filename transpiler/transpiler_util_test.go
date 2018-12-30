@@ -125,8 +125,7 @@ func TestWrapEndpoint(t *testing.T) {
 			result := WrapEndpoint("", tt.route, "")
 
 			if result != expectedValues[i] {
-				println(result)
-				println("///")
+
 				t.Errorf("got  %v, want %v", result, expectedValues[i])
 			}
 
@@ -136,13 +135,11 @@ func TestWrapEndpoint(t *testing.T) {
 
 func TestGetHandler(t *testing.T) {
 
-	blankString := `
-`
+	blankString := "\n"
 
 	expectedValues := []string{
 		blankString,
-		blankString,
-		`
+		blankString,`
 //
 var Foo = string("Foo")
 
@@ -155,11 +152,10 @@ var Foo = string("Foo")
 	for i, tt := range routeTests {
 		t.Run(string(i), func(t *testing.T) {
 
-			result := GetHandler(testProject, tt.route, tt.route.Provide)
+			result,_ := GetHandler(testProject, tt.route, tt.route.Provide)
 
 			if result != expectedValues[i] {
-				println(result)
-				println("///")
+
 				t.Errorf("got  %v, want %v", result, expectedValues[i])
 			}
 

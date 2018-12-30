@@ -23,10 +23,10 @@ func Load(path string) (*Project, error) {
 	var ext = filepath.Ext(path)
 
 	switch ext {
-	case ".yml":
-		err = LoadYAML(path, env)
-	default:
-		err = LoadSE(path, env)
+		case ".yml":
+			err = LoadYAML(path, env)
+		default:
+			err = LoadSE(path, env)
 	}
 
 	if err != nil {
